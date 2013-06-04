@@ -777,7 +777,7 @@ minetest.register_node("default:furnace", {
 				return 0
 			end
 		elseif listname == "src" then
-			if minetest.get_craft_result({method="cooking",items={stack},level=playerlevels[player:get_player_name()]}).time < 0 then
+			if minetest.get_craft_result({method="cooking",items={stack},level=playerskills[player:get_player_name()]}).time < 0 then
 				return 0
 			else
 				return stack:get_count()
@@ -800,7 +800,7 @@ minetest.register_node("default:furnace", {
 				return 0
 			end
 		elseif to_list == "src" then
-			if minetest.get_craft_result({method="cooking",items={stack},level=playerlevels[player:get_player_name()]}).time < 0 then
+			if minetest.get_craft_result({method="cooking",items={stack},level=playerskills[player:get_player_name()]}).time < 0 then
 				return 0
 			else
 				return count
@@ -855,7 +855,7 @@ minetest.register_node("default:furnace_active", {
 				return 0
 			end
 		elseif listname == "src" then
-			if minetest.get_craft_result({method="cooking",items={stack},level=playerlevels[player:get_player_name()]}).time < 0 then
+			if minetest.get_craft_result({method="cooking",items={stack},level=playerskills[player:get_player_name()]}).time < 0 then
 				return 0
 			else
 				return stack:get_count()
@@ -878,7 +878,7 @@ minetest.register_node("default:furnace_active", {
 				return 0
 			end
 		elseif to_list == "src" then
-			if minetest.get_craft_result({method="cooking",items={stack},level=playerlevels[player:get_player_name()]}).time < 0 then
+			if minetest.get_craft_result({method="cooking",items={stack},level=playerskills[player:get_player_name()]}).time < 0 then
 				return 0
 			else
 				return count

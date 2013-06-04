@@ -1,8 +1,37 @@
 
-playerlevels = {
-	-- example_user = {stone=1, tool=2},
-	singleplayer = {wood=1,furnace=1},
-}
+playerskills = nil
+
+function save_playerskills()
+	local file = io.open(minetest.get_worldpath().."/playerskills", "w")
+	if file then
+		file:write(minetest.serialize(playerskills))
+		file:close()
+	end
+end
+
+local file = io.open(minetest.get_worldpath().."/playerskills", "r")
+if file then
+	local playerskills = minetest.deserialize(file:read("*all"))
+end
+if not playerskills or not type(playerskills) == "table" then
+	playerskills = {}
+end
+
+save_playerskills()
+
+minetest.register_chatcommand("set_skill", {
+	params = "<name> <skill> <rating>",
+	description = "Sets skill of a player",
+	privs = {server=true},
+	func = function(name, param)
+		local name, skill, rating = string.match(param, "^([a-zA-Z0-9_]*) ([a-zA-Z0-9_]*) ([%d.-]+)$")
+		if not playerskills[name] then
+			playerskills[name] = {}
+		end
+		playerskills[name][skill] = rating
+		save_playerskills()
+	end,
+})
 
 local crafting = {
 	normal = {},
@@ -104,7 +133,7 @@ local function update_workbench(pos, playername)
 		method = "normal",
 		width = 3,
 		items = inv:get_list("craft"),
-		level = playerlevels[playername],
+		level = playerskills[playername],
 	})
 	if not result then
 		return
@@ -191,7 +220,8 @@ minetest.register_on_joinplayer(function(player)
 		"size[8,5;]"..
 		"list[current_player;main;0,0.5;8,4;]"
 	)
-	if not playerlevels[player:get_player_name()] then
-		playerlevels[player:get_player_name()] = {}
+	if not playerskills[player:get_player_name()] then
+		playerskills[player:get_player_name()] = {}
+		save_playerskills()
 	end
 end)
