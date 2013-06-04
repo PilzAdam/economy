@@ -604,6 +604,7 @@ minetest.register_craft({
 	type = "cooking",
 	output = "default:clay_brick",
 	recipe = "default:clay_lump",
+	level = {furnace=1}
 })
 
 --

@@ -1,7 +1,7 @@
 
 playerlevels = {
 	-- example_user = {stone=1, tool=2},
-	singleplayer = {wood=1},
+	singleplayer = {wood=1,furnace=1},
 }
 
 local crafting = {
@@ -23,6 +23,7 @@ minetest.register_craft = function(def)
 		crafting.cooking[def.recipe] = {
 			time = def.burntime or 1,
 			output = def.output,
+			level = def.level or {},
 		}
 	elseif def.type == "fuel" then
 		crafting.fuel[def.recipe] = {
@@ -39,8 +40,6 @@ minetest.get_craft_result = function(input)
 		if not def then
 			return result
 		end
-		print(dump(input.level))
-		print(dump(def.level))
 		for name,rating in pairs(def.level) do
 			if not input.level[name] or input.level[name] < rating then
 				return
@@ -53,6 +52,13 @@ minetest.get_craft_result = function(input)
 		local def = crafting.cooking[input.items[1]:get_name()]
 		if not def then
 			return ret, ret2
+		end
+		if input.level then
+			for name,rating in pairs(def.level) do
+				if not input.level[name] or input.level[name] < rating then
+					return ret, ret2
+				end
+			end
 		end
 		ret.time = def.time
 		ret.item = ItemStack(def.output)
@@ -138,14 +144,12 @@ minetest.register_node("crafting:workbench", {
 	end,
 	allow_metadata_inventory_move = function(pos, from_list, from_index,to_list, to_index, count, player)
 		if to_list == "result" then
-			print("Nope")
 			return 0
 		end
 		return count
 	end,
 	allow_metadata_inventory_put = function(pos, listname, index, stack, player)
 		if listname == "result" then
-			print("Nope")
 			return 0
 		end
 		return stack:get_count()

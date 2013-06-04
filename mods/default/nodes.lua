@@ -768,7 +768,7 @@ minetest.register_node("default:furnace", {
 		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
 		if listname == "fuel" then
-			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
+			if minetest.get_craft_result({method="fuel",items={stack}}).time ~= 0 then
 				if inv:is_empty("src") then
 					meta:set_string("infotext","Furnace is empty")
 				end
@@ -777,7 +777,11 @@ minetest.register_node("default:furnace", {
 				return 0
 			end
 		elseif listname == "src" then
-			return stack:get_count()
+			if minetest.get_craft_result({method="cooking",items={stack},level=playerlevels[player:get_player_name()]}).time < 0 then
+				return 0
+			else
+				return stack:get_count()
+			end
 		elseif listname == "dst" then
 			return 0
 		end
@@ -787,7 +791,7 @@ minetest.register_node("default:furnace", {
 		local inv = meta:get_inventory()
 		local stack = inv:get_stack(from_list, from_index)
 		if to_list == "fuel" then
-			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
+			if minetest.get_craft_result({method="fuel",items={stack}}).time ~= 0 then
 				if inv:is_empty("src") then
 					meta:set_string("infotext","Furnace is empty")
 				end
@@ -796,7 +800,11 @@ minetest.register_node("default:furnace", {
 				return 0
 			end
 		elseif to_list == "src" then
-			return count
+			if minetest.get_craft_result({method="cooking",items={stack},level=playerlevels[player:get_player_name()]}).time < 0 then
+				return 0
+			else
+				return count
+			end
 		elseif to_list == "dst" then
 			return 0
 		end
@@ -838,7 +846,7 @@ minetest.register_node("default:furnace_active", {
 		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
 		if listname == "fuel" then
-			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
+			if minetest.get_craft_result({method="fuel",items={stack}}).time ~= 0 then
 				if inv:is_empty("src") then
 					meta:set_string("infotext","Furnace is empty")
 				end
@@ -847,7 +855,11 @@ minetest.register_node("default:furnace_active", {
 				return 0
 			end
 		elseif listname == "src" then
-			return stack:get_count()
+			if minetest.get_craft_result({method="cooking",items={stack},level=playerlevels[player:get_player_name()]}).time < 0 then
+				return 0
+			else
+				return stack:get_count()
+			end
 		elseif listname == "dst" then
 			return 0
 		end
@@ -857,7 +869,7 @@ minetest.register_node("default:furnace_active", {
 		local inv = meta:get_inventory()
 		local stack = inv:get_stack(from_list, from_index)
 		if to_list == "fuel" then
-			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
+			if minetest.get_craft_result({method="fuel",items={stack}}).time ~= 0 then
 				if inv:is_empty("src") then
 					meta:set_string("infotext","Furnace is empty")
 				end
@@ -866,7 +878,11 @@ minetest.register_node("default:furnace_active", {
 				return 0
 			end
 		elseif to_list == "src" then
-			return count
+			if minetest.get_craft_result({method="cooking",items={stack},level=playerlevels[player:get_player_name()]}).time < 0 then
+				return 0
+			else
+				return count
+			end
 		elseif to_list == "dst" then
 			return 0
 		end
@@ -911,7 +927,7 @@ minetest.register_abm({
 		local aftercooked
 		
 		if srclist then
-			cooked, aftercooked = minetest.get_craft_result({method = "cooking", width = 1, items = srclist})
+			cooked, aftercooked = minetest.get_craft_result({method = "cooking", items = srclist})
 		end
 		
 		local was_active = false
@@ -957,10 +973,10 @@ minetest.register_abm({
 		local srclist = inv:get_list("src")
 		
 		if srclist then
-			cooked = minetest.get_craft_result({method = "cooking", width = 1, items = srclist})
+			cooked = minetest.get_craft_result({method = "cooking", items = srclist})
 		end
 		if fuellist then
-			fuel, afterfuel = minetest.get_craft_result({method = "fuel", width = 1, items = fuellist})
+			fuel, afterfuel = minetest.get_craft_result({method = "fuel", items = fuellist})
 		end
 
 		if fuel.time <= 0 then
