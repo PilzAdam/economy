@@ -17,6 +17,7 @@ minetest.register_node("default:desert_stone", {
 	groups = {cracky=3, stone=1},
 	drop = 'default:desert_stone',
 	legacy_mineral = true,
+	worthiness = 10,
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -25,6 +26,7 @@ minetest.register_node("default:stone_with_coal", {
 	tiles = {"default_stone.png^default_mineral_coal.png"},
 	is_ground_content = true,
 	groups = {cracky=3},
+	worthiness = 10,
 	drop = 'default:coal_lump',
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -34,6 +36,7 @@ minetest.register_node("default:stone_with_iron", {
 	tiles = {"default_stone.png^default_mineral_iron.png"},
 	is_ground_content = true,
 	groups = {cracky=2},
+	worthiness = 10,
 	drop = 'default:iron_lump',
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -43,6 +46,7 @@ minetest.register_node("default:stone_with_copper", {
 	tiles = {"default_stone.png^default_mineral_copper.png"},
 	is_ground_content = true,
 	groups = {cracky=2},
+	worthiness = 10,
 	drop = 'default:copper_lump',
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -52,6 +56,7 @@ minetest.register_node("default:stone_with_mese", {
 	tiles = {"default_stone.png^default_mineral_mese.png"},
 	is_ground_content = true,
 	groups = {cracky=1},
+	worthiness = 10,
 	drop = "default:mese_crystal",
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -61,6 +66,7 @@ minetest.register_node("default:stone_with_gold", {
 	tiles = {"default_stone.png^default_mineral_gold.png"},
 	is_ground_content = true,
 	groups = {cracky=2},
+	worthiness = 10,
 	drop = "default:gold_lump",
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -70,6 +76,7 @@ minetest.register_node("default:stone_with_diamond", {
 	tiles = {"default_stone.png^default_mineral_diamond.png"},
 	is_ground_content = true,
 	groups = {cracky=1},
+	worthiness = 10,
 	drop = "default:diamond",
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -78,6 +85,7 @@ minetest.register_node("default:stonebrick", {
 	description = "Stone Brick",
 	tiles = {"default_stone_brick.png"},
 	groups = {cracky=2, stone=1},
+	worthiness = 10,
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -85,6 +93,7 @@ minetest.register_node("default:desert_stonebrick", {
 	description = "Desert Stone Brick",
 	tiles = {"default_desert_stone_brick.png"},
 	groups = {cracky=2, stone=1},
+	worthiness = 10,
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -94,6 +103,7 @@ minetest.register_node("default:dirt_with_grass", {
 	is_ground_content = true,
 	groups = {crumbly=3,soil=1},
 	drop = 'default:dirt',
+	worthiness = 10,
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
@@ -103,6 +113,7 @@ minetest.register_node("default:dirt_with_grass_footsteps", {
 	description = "Dirt with Grass and Footsteps",
 	tiles = {"default_grass_footsteps.png", "default_dirt.png", "default_dirt.png^default_grass_side.png"},
 	is_ground_content = true,
+	worthiness = 10,
 	groups = {crumbly=3,soil=1,not_in_creative_inventory=1},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
@@ -115,6 +126,7 @@ minetest.register_node("default:dirt_with_snow", {
 	tiles = {"default_snow.png", "default_dirt.png", "default_dirt.png^default_snow_side.png"},
 	is_ground_content = true,
 	groups = {crumbly=3},
+	worthiness = 10,
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
@@ -125,6 +137,7 @@ minetest.register_alias("dirt_with_snow", "default:dirt_with_snow")
 minetest.register_node("default:dirt", {
 	description = "Dirt",
 	tiles = {"default_dirt.png"},
+	worthiness = 10,
 	is_ground_content = true,
 	groups = {crumbly=3,soil=1},
 	sounds = default.node_sound_dirt_defaults(),
@@ -133,6 +146,7 @@ minetest.register_node("default:dirt", {
 minetest.register_node("default:sand", {
 	description = "Sand",
 	tiles = {"default_sand.png"},
+	worthiness = 10,
 	is_ground_content = true,
 	groups = {crumbly=3, falling_node=1, sand=1},
 	sounds = default.node_sound_sand_defaults(),
@@ -140,6 +154,7 @@ minetest.register_node("default:sand", {
 
 minetest.register_node("default:desert_sand", {
 	description = "Desert Sand",
+	worthiness = 10,
 	tiles = {"default_desert_sand.png"},
 	is_ground_content = true,
 	groups = {crumbly=3, falling_node=1, sand=1},
@@ -150,6 +165,7 @@ minetest.register_node("default:gravel", {
 	description = "Gravel",
 	tiles = {"default_gravel.png"},
 	is_ground_content = true,
+	worthiness = 10,
 	groups = {crumbly=2, falling_node=1},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_gravel_footstep", gain=0.45},
@@ -161,6 +177,7 @@ minetest.register_node("default:sandstone", {
 	tiles = {"default_sandstone.png"},
 	is_ground_content = true,
 	groups = {crumbly=2,cracky=3},
+	worthiness = 10,
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -169,6 +186,7 @@ minetest.register_node("default:sandstonebrick", {
 	tiles = {"default_sandstone_brick.png"},
 	is_ground_content = true,
 	groups = {cracky=2},
+	worthiness = 10,
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -178,6 +196,7 @@ minetest.register_node("default:clay", {
 	is_ground_content = true,
 	groups = {crumbly=3},
 	drop = 'default:clay_lump 4',
+	worthiness = 10,
 	sounds = default.node_sound_dirt_defaults({
 		footstep = "",
 	}),
@@ -186,6 +205,7 @@ minetest.register_node("default:clay", {
 minetest.register_node("default:brick", {
 	description = "Brick Block",
 	tiles = {"default_brick.png"},
+	worthiness = 10,
 	groups = {cracky=3},
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -195,6 +215,7 @@ minetest.register_node("default:tree", {
 	tiles = {"default_tree_top.png", "default_tree_top.png", "default_tree.png"},
 	groups = {tree=1,choppy=2,oddly_breakable_by_hand=1,flammable=2},
 	sounds = default.node_sound_wood_defaults(),
+	worthiness = 10,
 })
 
 minetest.register_node("default:jungletree", {
@@ -202,6 +223,7 @@ minetest.register_node("default:jungletree", {
 	tiles = {"default_jungletree_top.png", "default_jungletree_top.png", "default_jungletree.png"},
 	groups = {tree=1,choppy=2,oddly_breakable_by_hand=1,flammable=2},
 	sounds = default.node_sound_wood_defaults(),
+	worthiness = 10,
 })
 
 minetest.register_node("default:junglewood", {
@@ -209,6 +231,7 @@ minetest.register_node("default:junglewood", {
 	tiles = {"default_junglewood.png"},
 	groups = {choppy=2,oddly_breakable_by_hand=2,flammable=3,wood=1},
 	sounds = default.node_sound_wood_defaults(),
+	worthiness = 10,
 })
 
 minetest.register_node("default:jungleleaves", {
@@ -234,6 +257,7 @@ minetest.register_node("default:jungleleaves", {
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
+	worthiness = 10,
 })
 
 minetest.register_node("default:junglesapling", {
@@ -251,6 +275,7 @@ minetest.register_node("default:junglesapling", {
 	},
 	groups = {snappy=2,dig_immediate=3,flammable=2,attached_node=1},
 	sounds = default.node_sound_defaults(),
+	worthiness = 10,
 })
 -- aliases for tree growing abm in content_abm.cpp
 minetest.register_alias("sapling", "default:sapling")
@@ -269,6 +294,7 @@ minetest.register_node("default:junglegrass", {
 	is_ground_content = true,
 	groups = {snappy=3,flammable=2,flora=1,attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
+	worthiness = 10,
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
@@ -282,6 +308,7 @@ minetest.register_node("default:leaves", {
 	tiles = {"default_leaves.png"},
 	paramtype = "light",
 	groups = {snappy=3, leafdecay=3, flammable=2, leaves=1},
+	worthiness = 10,
 	drop = {
 		max_items = 1,
 		items = {
@@ -305,6 +332,7 @@ minetest.register_node("default:cactus", {
 	tiles = {"default_cactus_top.png", "default_cactus_top.png", "default_cactus_side.png"},
 	is_ground_content = true,
 	groups = {snappy=1,choppy=3,flammable=2},
+	worthiness = 10,
 	sounds = default.node_sound_wood_defaults(),
 })
 
@@ -315,6 +343,7 @@ minetest.register_node("default:papyrus", {
 	inventory_image = "default_papyrus.png",
 	wield_image = "default_papyrus.png",
 	paramtype = "light",
+	worthiness = 10,
 	walkable = false,
 	is_ground_content = true,
 	selection_box = {
@@ -327,6 +356,7 @@ minetest.register_node("default:papyrus", {
 
 minetest.register_node("default:bookshelf", {
 	description = "Bookshelf",
+	worthiness = 10,
 	tiles = {"default_wood.png", "default_wood.png", "default_bookshelf.png"},
 	groups = {choppy=3,oddly_breakable_by_hand=2,flammable=3},
 	sounds = default.node_sound_wood_defaults(),
@@ -336,6 +366,7 @@ minetest.register_node("default:glass", {
 	description = "Glass",
 	drawtype = "glasslike",
 	tiles = {"default_glass.png"},
+	worthiness = 10,
 	inventory_image = minetest.inventorycube("default_glass.png"),
 	paramtype = "light",
 	sunlight_propagates = true,
@@ -350,6 +381,7 @@ minetest.register_node("default:fence_wood", {
 	inventory_image = "default_fence.png",
 	wield_image = "default_fence.png",
 	paramtype = "light",
+	worthiness = 10,
 	selection_box = {
 		type = "fixed",
 		fixed = {-1/7, -1/2, -1/7, 1/7, 1/2, 1/7},
@@ -366,6 +398,7 @@ minetest.register_node("default:rail", {
 	wield_image = "default_rail.png",
 	paramtype = "light",
 	walkable = false,
+	worthiness = 10,
 	selection_box = {
 		type = "fixed",
                 -- but how to specify the dimensions for curved and sideways rails?
@@ -382,6 +415,7 @@ minetest.register_node("default:ladder", {
 	wield_image = "default_ladder.png",
 	paramtype = "light",
 	paramtype2 = "wallmounted",
+	worthiness = 10,
 	walkable = false,
 	climbable = true,
 	selection_box = {
@@ -397,6 +431,7 @@ minetest.register_node("default:ladder", {
 
 minetest.register_node("default:wood", {
 	description = "Wooden Planks",
+	worthiness = 10,
 	tiles = {"default_wood.png"},
 	groups = {choppy=2,oddly_breakable_by_hand=2,flammable=3,wood=1},
 	sounds = default.node_sound_wood_defaults(),
@@ -407,6 +442,7 @@ minetest.register_node("default:cloud", {
 	tiles = {"default_cloud.png"},
 	sounds = default.node_sound_defaults(),
 	groups = {not_in_creative_inventory=1},
+	worthiness = 10,
 })
 
 minetest.register_node("default:water_flowing", {
@@ -429,6 +465,7 @@ minetest.register_node("default:water_flowing", {
 	alpha = WATER_ALPHA,
 	paramtype = "light",
 	walkable = false,
+	worthiness = 10,
 	pointable = false,
 	diggable = false,
 	buildable_to = true,
@@ -445,6 +482,7 @@ minetest.register_node("default:water_source", {
 	description = "Water Source",
 	inventory_image = minetest.inventorycube("default_water.png"),
 	drawtype = "liquid",
+	worthiness = 10,
 	tiles = {
 		{name="default_water_source_animated.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=2.0}}
 	},
@@ -462,6 +500,7 @@ minetest.register_node("default:water_source", {
 	pointable = false,
 	diggable = false,
 	buildable_to = true,
+	worthiness = 10,
 	drop = "",
 	liquidtype = "source",
 	liquid_alternative_flowing = "default:water_flowing",
@@ -476,6 +515,7 @@ minetest.register_node("default:lava_flowing", {
 	inventory_image = minetest.inventorycube("default_lava.png"),
 	drawtype = "flowingliquid",
 	tiles = {"default_lava.png"},
+	worthiness = 10,
 	special_tiles = {
 		{
 			image="default_lava_flowing_animated.png",
@@ -495,6 +535,7 @@ minetest.register_node("default:lava_flowing", {
 	diggable = false,
 	buildable_to = true,
 	drop = "",
+	worthiness = 10,
 	liquidtype = "flowing",
 	liquid_alternative_flowing = "default:lava_flowing",
 	liquid_alternative_source = "default:lava_source",
@@ -512,6 +553,7 @@ minetest.register_node("default:lava_source", {
 	tiles = {
 		{name="default_lava_source_animated.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}}
 	},
+	worthiness = 10,
 	special_tiles = {
 		-- New-style lava source material (mostly unused)
 		{
@@ -528,6 +570,7 @@ minetest.register_node("default:lava_source", {
 	buildable_to = true,
 	drop = "",
 	liquidtype = "source",
+	worthiness = 10,
 	liquid_alternative_flowing = "default:lava_flowing",
 	liquid_alternative_source = "default:lava_source",
 	liquid_viscosity = LAVA_VISC,
@@ -550,6 +593,7 @@ minetest.register_node("default:torch", {
 	wield_image = "default_torch_on_floor.png",
 	paramtype = "light",
 	paramtype2 = "wallmounted",
+	worthiness = 10,
 	sunlight_propagates = true,
 	walkable = false,
 	light_source = LIGHT_MAX-1,
@@ -570,6 +614,7 @@ minetest.register_node("default:sign_wall", {
 	tiles = {"default_sign_wall.png"},
 	inventory_image = "default_sign_wall.png",
 	wield_image = "default_sign_wall.png",
+	worthiness = 10,
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	sunlight_propagates = true,
@@ -607,6 +652,7 @@ minetest.register_node("default:chest", {
 	paramtype2 = "facedir",
 	groups = {choppy=2,oddly_breakable_by_hand=2},
 	legacy_facedir_simple = true,
+	worthiness = 10,
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -650,6 +696,7 @@ minetest.register_node("default:chest_locked", {
 		"default_chest_side.png", "default_chest_side.png", "default_chest_lock.png"},
 	paramtype2 = "facedir",
 	groups = {choppy=2,oddly_breakable_by_hand=2},
+	worthiness = 10,
 	legacy_facedir_simple = true,
 	sounds = default.node_sound_wood_defaults(),
 	after_place_node = function(pos, placer)
