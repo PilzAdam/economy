@@ -11,7 +11,7 @@ end
 
 local file = io.open(minetest.get_worldpath().."/playerskills", "r")
 if file then
-	local playerskills = minetest.deserialize(file:read("*all"))
+	playerskills = minetest.deserialize(file:read("*all"))
 end
 if not playerskills or not type(playerskills) == "table" then
 	playerskills = {}
@@ -216,10 +216,6 @@ minetest.register_node("crafting:workbench", {
 })
 
 minetest.register_on_joinplayer(function(player)
-	player:set_inventory_formspec(
-		"size[8,5;]"..
-		"list[current_player;main;0,0.5;8,4;]"
-	)
 	if not playerskills[player:get_player_name()] then
 		playerskills[player:get_player_name()] = {}
 		save_playerskills()
